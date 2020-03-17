@@ -1,0 +1,27 @@
+%btn-base {
+    border-style: solid;
+    box-sizing: border-box;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+@mixin btn($padding, $border-width: x, $height: x) {
+    @extend %btn-base;
+     // btn 默认水平垂直剧中
+    @include l-flex(column, center);
+    @include m-property(padding, $padding);
+    @include m-property(border-width, $border-width);
+    @include m-property(height, $height);
+    @if $height != x {
+        flex-direction: row;
+    }
+}
+
+@mixin btn--disabled {
+    &.disabled {
+        cursor: default;
+        pointer-events: none;
+        @content;
+    }
+}
