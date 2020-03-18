@@ -6,16 +6,21 @@
     cursor: pointer;
 }
 
-@mixin btn($padding, $border-width: x, $height: x) {
+@mixin btn($padding, $height: x) {
     @extend %btn-base;
      // btn 默认水平垂直剧中
     @include l-flex(column, center);
-    @include m-property(padding, $padding);
-    @include m-property(border-width, $border-width);
-    @include m-property(height, $height);
+    @include h-property(padding, $padding);
+    @include h-property(border-width, $border-width);
+    @include h-property(height, $height);
     @if $height != x {
         flex-direction: row;
     }
+}
+
+@mixin btn-label($padding, $height: x) {
+    @include btn($padding, $height);
+    cursor: default;
 }
 
 @mixin btn--disabled {

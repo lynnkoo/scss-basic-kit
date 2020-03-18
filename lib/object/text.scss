@@ -1,0 +1,24 @@
+
+%text-base {
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+%base-text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin text {
+    @extend %base-text;
+}
+
+@mixin text-ellipsis($width, $line-clamp: 1) {
+    @extend %base-text-ellipsis;
+    @include h-property(width, $width);
+}
+
+@mixin text-link {
+    @include text();
+    text-align: center;
+}
