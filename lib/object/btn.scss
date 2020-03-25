@@ -1,32 +1,31 @@
 %btn-base {
-    border-style: solid;
-    box-sizing: border-box;
-    text-align: center;
-    user-select: none;
-    cursor: pointer;
+  border: 1px solid $transparent;
+  box-sizing: border-box;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
 }
 
 @mixin btn($padding, $height: x) {
-    @extend %btn-base;
-     // btn 默认水平垂直剧中
-    @include l-flex(column, center);
-    @include h-property(padding, $padding);
-    @include h-property(border-width, $border-width);
-    @include h-property(height, $height);
-    @if $height != x {
-        flex-direction: row;
-    }
+  @extend %btn-base;
+  // btn 默认水平垂直剧中
+  @include l-flex(column, center);
+  @include h-property(padding, $padding);
+  @include h-property(height, $height);
+  @if $height != x {
+    flex-direction: row;
+  }
 }
 
 @mixin btn-label($padding, $height: x) {
-    @include btn($padding, $height);
-    cursor: default;
+  @include btn($padding, $height);
+  text-decoration: none;
 }
 
 @mixin btn--disabled {
-    &.disabled {
-        cursor: default;
-        pointer-events: none;
-        @content;
-    }
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+    @content;
+  }
 }
